@@ -19,7 +19,10 @@ html {
 
 body {
   margin: 0;
-  background: var(--field);
+  background:
+    linear-gradient(90deg, rgb(12 28 20 / 0.9) 0%, rgb(12 28 20 / 0.4) 34%, rgb(12 28 20 / 0.08) 58%, transparent 78%),
+    linear-gradient(180deg, rgb(12 28 20 / 0.28) 0%, transparent 16%, transparent 68%, rgb(12 28 20 / 0.92) 100%),
+    url("hero.jpg") 72% 42% / cover no-repeat fixed;
   color: var(--silver);
   font-family: var(--sans);
   font-size: 1.0625rem;
@@ -44,9 +47,9 @@ p { text-wrap: pretty; }
   top: 0;
   z-index: 2;
   width: 100%;
-  background: color-mix(in srgb, var(--field) 90%, transparent);
-  border-bottom: 1px solid var(--line);
-  backdrop-filter: blur(8px);
+  background: color-mix(in srgb, var(--field) 55%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--line) 60%, transparent);
+  backdrop-filter: blur(10px);
 }
 
 .bar-inner,
@@ -81,21 +84,48 @@ nav a { text-decoration: none; color: var(--silver-dim); }
 
 .pill {
   border-radius: 999px;
-  border: 1px solid color-mix(in srgb, var(--nv-bright) 50%, transparent);
-  background: var(--grove);
-  color: var(--nv-bright);
+  background: var(--nv);
+  color: var(--field);
+  border: none;
   padding: 0.4rem 0.75rem;
   font-size: 0.75rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
+  font-weight: 700;
 }
 
-.hero,
-.pledge {
-  display: grid;
-  gap: 2.5rem;
+.hero {
+  display: flex;
   align-items: center;
+  min-height: calc(100svh - 4rem);
   padding: 3.5rem 1.25rem;
+}
+
+.quote {
+  margin: 1.75rem 0 0;
+  padding: 0 0 0 1rem;
+  border: none;
+  border-left: 2px solid var(--nv-bright);
+  max-width: 32rem;
+}
+
+.quote p {
+  font-family: var(--display);
+  font-size: clamp(1.6rem, 3.5vw, 2.15rem);
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--silver);
+  margin: 0;
+}
+
+.quote footer {
+  margin-top: 0.6rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--nv-bright);
 }
 
 .kicker {
@@ -114,7 +144,14 @@ h2 { font-size: clamp(3rem, 7vw, 4.5rem); color: var(--silver); }
   max-width: 28rem;
   font-size: 1.25rem;
   margin: 1.5rem 0 0;
-  color: var(--silver-dim);
+  color: var(--silver);
+}
+
+.pledge {
+  display: grid;
+  gap: 2.5rem;
+  align-items: center;
+  padding: 3.5rem 1.25rem;
 }
 
 .actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2rem; }
@@ -192,8 +229,9 @@ h2 { font-size: clamp(3rem, 7vw, 4.5rem); color: var(--silver); }
 
 .rules {
   display: grid;
-  border-block: 1px solid var(--line);
-  background: var(--grove);
+  border-block: 1px solid color-mix(in srgb, var(--line) 70%, transparent);
+  background: color-mix(in srgb, var(--grove) 82%, transparent);
+  backdrop-filter: blur(6px);
 }
 
 .rules article { padding: 2.5rem 1.5rem; }
@@ -252,7 +290,7 @@ footer {
 }
 
 @media (min-width: 800px) {
-  .hero, .pledge { grid-template-columns: 1.15fr 0.85fr; padding-block: 5rem; }
+  .pledge { grid-template-columns: 1.15fr 0.85fr; padding-block: 5rem; }
   .rules { grid-template-columns: repeat(3, 1fr); }
   .rules article + article { border-left: 1px solid color-mix(in srgb, #f4f6f4 28%, transparent); }
   .status dl > div { grid-template-columns: 10rem 1fr; align-items: baseline; gap: 1.5rem; }
@@ -261,4 +299,9 @@ footer {
 
 @media (max-width: 640px) {
   nav a { display: none; }
+  body {
+    background:
+      linear-gradient(180deg, rgb(12 28 20 / 0.35) 0%, rgb(12 28 20 / 0.55) 38%, rgb(12 28 20 / 0.88) 100%),
+      url("hero.jpg") 78% 28% / cover no-repeat fixed;
+  }
 }
