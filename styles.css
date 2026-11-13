@@ -7,28 +7,37 @@
 html, body { margin: 0; min-height: 100%; }
 
 body {
+  position: relative;
   min-height: 100vh;
-  background:
-    linear-gradient(90deg, rgb(12 28 20 / 0.78) 0%, rgb(12 28 20 / 0.38) 32%, transparent 58%),
-    url("hero.jpg") 72% 42% / cover no-repeat fixed;
+  background: #0a1212;
   color: var(--ink);
   font-family: "Segoe UI", sans-serif;
 }
 
+.stage {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 72%;
+  background:
+    linear-gradient(180deg, transparent 0%, transparent 40%, rgb(10 18 18 / 0.45) 56%, #0a1212 70%),
+    url("hero.jpg") right 36% / cover no-repeat;
+}
+
 .sheet {
+  position: relative;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   min-height: 100vh;
   max-width: 72rem;
   margin: 0 auto;
-  padding: 4rem 1.5rem;
+  padding: 4rem 1.5rem 3rem;
 }
 
 ul {
   margin: 0;
   padding: 0;
   list-style: none;
-  max-width: 36rem;
+  max-width: 24rem;
 }
 
 li {
@@ -50,9 +59,19 @@ li::before {
 }
 
 @media (max-width: 800px) {
-  body {
+  .stage { display: block; }
+  li { font-size: 1.2rem; margin-bottom: 0.75rem; }
+}
+
+@media (min-width: 801px) {
+  .stage {
+    height: auto;
+    inset: 0;
     background:
-      linear-gradient(90deg, rgb(12 28 20 / 0.82) 0%, rgb(12 28 20 / 0.5) 48%, rgb(12 28 20 / 0.18) 100%),
-      url("hero.jpg") 78% 28% / cover no-repeat;
+      linear-gradient(90deg, rgb(12 28 20 / 0.78) 0%, rgb(12 28 20 / 0.38) 32%, transparent 58%),
+      url("hero.jpg") 72% 42% / cover no-repeat fixed;
   }
+  .sheet { align-items: center; padding: 4rem 2.5rem; }
+  ul { max-width: 36rem; }
+  li { font-size: 1.6rem; margin-bottom: 1rem; }
 }
